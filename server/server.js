@@ -1,4 +1,7 @@
-const httpServer = require("http").createServer();
+const path = require('path')
+const express = require('express');
+const app = express()
+const httpServer = require("http").createServer(app);
 const io = require("socket.io")(httpServer, {
   cors: {
     origin: "http://localhost:3000",
@@ -14,6 +17,11 @@ io.on("connection", (socket) => {
   })
   
 });
-
-httpServer.listen(4000, '127.0.0.1');
-console.log('Server running at http://127.0.0.1:4000/');
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve(__dirname+'/../build/index.html'));
+});
+app.use(express.static('build'));
+const PORT = process.env.PORT || 4000
+httpServer.listen(PORT,"0.0.0.0", () => {
+  console.log(`Listening on http://0.0.0.0:${PORT}`)
+})

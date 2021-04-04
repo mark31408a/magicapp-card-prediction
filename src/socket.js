@@ -18,7 +18,7 @@ const useSocket = ()=>{
     }
     else{
       socket.emit("setcard",x)
-      window.location.replace(`https://www.google.com`);
+      // window.location.replace(`https://www.google.com`);
     }
     
   }
