@@ -1,7 +1,7 @@
 import { useState} from 'react';
 import { io } from "socket.io-client";
 const URL = "http://localhost:4000";
-const socket = io(URL, { autoConnect: false });
+const socket = io( { autoConnect: false });
 const useSocket = ()=>{
   const [status,UseState]=useState("init")
   
