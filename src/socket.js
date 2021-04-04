@@ -1,17 +1,25 @@
-import { useState} from 'react';
+import { useEffect, useState} from 'react';
 import { io } from "socket.io-client";
-const URL = "http://localhost:4000";
-const socket = io( { autoConnect: false });
+import {useLocation} from "react-router-dom"
+const socket = io();
+
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 const useSocket = ()=>{
-  const [status,UseState]=useState("init")
-  
+
+  const [status,setStatus]=useState("x")
+  const query = useQuery()
+
+  useEffect(()=>{
+    setStatus(query.get("x"))
+  },[query])
+
   socket.on("gotourl",(payload)=>{
-    if(status !== "player") return 
-    window.location.replace(`https://www.random.org/playing-cards/?cards=1&decks=52&${payload.suit}=on&${payload.number}=on`);
+    if(status === "x") return 
+    window.location.replace(`https://www.random.org/playing-cards/?cards=3&decks=3&${payload.suit}=on&${payload.number}=on`);
   })
-  const connectSocket = ()=>{
-    socket.connect()
-  }
+  
   const emit=(x)=>{
     if(!socket.connected){
       console.log("no!!!")
@@ -20,9 +28,10 @@ const useSocket = ()=>{
       socket.emit("setcard",x)
       // window.location.replace(`https://www.google.com`);
     }
-    
   }
-  return [status,UseState,connectSocket,emit]
+
+  socket.connect()
+  return [status,emit]
 }
   
 export default useSocket;

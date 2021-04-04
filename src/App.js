@@ -3,7 +3,7 @@ import useSocket from './socket'
 import Controll from './Controll'
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 function App() {
-  const [status,setStatus,connectSocket,emitmessage] = useSocket(); 
+  const [status,emitmessage] = useSocket(); 
   const screen1 = useFullScreenHandle();
   return (
     <>
@@ -12,13 +12,11 @@ function App() {
           status==="init"?
             <>
               <button onClick={()=>{
-                setStatus("player");
-                connectSocket()
-              }}>start</button>
-              <button onClick={()=>{
-                connectSocket()
                 screen1.enter()
-              }}>controll</button>
+              }}>start</button>
+              <FullScreen handle={screen1}>
+                <Controll emitmessage={emitmessage}/>
+              </FullScreen>
             </>
           :
             <div style={{
@@ -28,9 +26,7 @@ function App() {
             }}></div>
         }
       </div>
-      <FullScreen handle={screen1}>
-        <Controll emitmessage={emitmessage}/>
-      </FullScreen>
+      
     </>
   );
 }
