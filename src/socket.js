@@ -7,7 +7,7 @@ const useSocket = ()=>{
   
   socket.on("gotourl",(payload)=>{
     if(status !== "player") return 
-    window.location.replace(`https://www.random.org/playing-cards/?cards=1&decks=2&${payload.suit}=on&${payload.number}=on`);
+    window.location.replace(`https://www.random.org/playing-cards/?cards=1&decks=52&${payload.suit}=on&${payload.number}=on`);
   })
   const connectSocket = ()=>{
     socket.connect()
