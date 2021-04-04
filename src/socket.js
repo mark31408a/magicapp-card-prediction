@@ -17,7 +17,7 @@ const useSocket = ()=>{
 
   socket.on("gotourl",(payload)=>{
     if(status === "x") return 
-    window.location.replace(`https://www.random.org/playing-cards/?cards=3&decks=3&${payload.suit}=on&${payload.number}=on`);
+    window.location.replace(`https://www.random.org/playing-cards/?cards=1&decks=2&${payload.suit}=on&${payload.number}=on`);
   })
   
   const emit=(x)=>{

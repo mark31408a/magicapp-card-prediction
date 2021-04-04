@@ -9,7 +9,7 @@ function App() {
     <>
       <div className="App">
         {
-          status==="init"?
+          status==="x"?
             <>
               <button onClick={()=>{
                 screen1.enter()
