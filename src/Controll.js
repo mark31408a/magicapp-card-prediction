@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './Controll.css';
 function Controll({emitmessage}) {
-  const suits=["spades","hearts","clubs","diamonds"]
+  const suits=["spades","clubs","hearts","diamonds"]
   const numbers=["aces","twos","threes","fours","fives","sixes","sevens","eights","nines","tens","jacks","queens","kings"]
   const x2num=[0,1,2,5]
   const [card,setcard]=useState({})
@@ -17,18 +17,30 @@ function Controll({emitmessage}) {
 //   },)
   const handleClick = (x)=>{
     setcard((card)=>{
-        if(!card.suit){
-            return{suit:suits[x],number:0}
-        }
-        if(x===0){
-            emitmessage({suit:card.suit,number:numbers[(card.number-1)%13]})
-            return {}
-        }
-        else{
-            return{suit:card.suit,number:card.number+x2num[x]}
-        }
+      
+      if(card.red===undefined){
+        return{red:x}
+      }
+      if(!card.suit){
+        return{red:card.red,suit:suits[card.red*2+x]}
+      } 
+      if(!card.number){
+        return {red:card.red,suit:suits[card.red*2+x], number: x===1 ? 2:1 ,lastx : x}
+      }
+      if(x===card.lastx){
+        return {red:card.red,suit:card.suit, number: card.number+2 ,lastx : card.lastx}
+      }
+      emitmessage({suit:card.suit,number:numbers[(card.number+12)%13]})
+      console.log({suit:card.suit,number:numbers[(card.number+12)%13]})
+      return {}
+      
+      
     })
+    console.log(card)
     
+  }
+  const reset = ()=>{
+    setcard({})
   }
   return (
     <>
@@ -41,15 +53,9 @@ function Controll({emitmessage}) {
             handleClick(1)
           }}/>
         </div>
-        <div className="row">
-          <div className="col" onClick={()=>{
-            handleClick(3)
-          }}/>
-          <div className="col" onClick={()=>{
-            handleClick(2)
-          }}/>
-        </div>
-        {/* <div className="time">{time}</div> */}
+        <div className="row2"onClick={()=>{
+            reset()
+        }}/>
       </div>
     </>
   );

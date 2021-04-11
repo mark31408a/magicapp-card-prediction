@@ -17,6 +17,12 @@
     flex-wrap: wrap;
 }
 
+.row2 {
+    height: 20vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .col{
     flex-grow: 1;
     display: table-cell;
