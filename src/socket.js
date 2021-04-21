@@ -16,7 +16,13 @@ const useSocket = ()=>{
   },[query])
 
   socket.on("gotourl",(payload)=>{
-    if(status === "x") return 
+    if(status === "x"){
+      setTimeout(()=>{
+        window.navigator.vibrate(800)
+        console.log("get")
+      },1000)
+      return 
+    }
     window.location.replace(`https://www.random.org/playing-cards/?cards=1&decks=2&${payload.suit}=on&${payload.number}=on`);
   })
   
