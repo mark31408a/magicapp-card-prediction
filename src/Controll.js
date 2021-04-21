@@ -16,8 +16,8 @@ function Controll({emitmessage}) {
     
 //   },)
   const handleClick = (x)=>{
-    if(x === 0)window.navigator.vibrate(100);
-    else window.navigator.vibrate([40,20,40]);
+    if(x === 0)window.navigator.vibrate(120);
+    else window.navigator.vibrate(80);
 
     setcard((card)=>{
       
@@ -28,7 +28,7 @@ function Controll({emitmessage}) {
         return{red:card.red,suit:suits[card.red*2+x]}
       } 
       if(!card.number){
-        return {red:card.red,suit:suits[card.red*2+x], number: x===1 ? 2:1 ,lastx : x}
+        return {red:card.red,suit:card.suit, number: x===1 ? 2:1 ,lastx : x}
       }
       if(x===card.lastx){
         return {red:card.red,suit:card.suit, number: card.number+2 ,lastx : card.lastx}
