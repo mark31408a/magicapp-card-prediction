@@ -18,6 +18,7 @@
 }
 
 .row2 {
+    color: rgb(255, 255, 255);
     height: 20vh;
     display: flex;
     flex-wrap: wrap;
@@ -26,4 +27,11 @@
 .col{
     flex-grow: 1;
     display: table-cell;
+}
+
+.col:active{
+    background-color: rgb(255, 255, 255,0.1);
+}
+.row2:active{
+    background-color: rgb(255, 255, 255,0.1);
 }

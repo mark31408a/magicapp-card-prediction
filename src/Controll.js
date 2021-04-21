@@ -16,6 +16,7 @@ function Controll({emitmessage}) {
     
 //   },)
   const handleClick = (x)=>{
+    window.navigator.vibrate(200);
     setcard((card)=>{
       
       if(card.red===undefined){
@@ -40,6 +41,7 @@ function Controll({emitmessage}) {
     
   }
   const reset = ()=>{
+    window.navigator.vibrate(200);
     setcard({})
   }
   return (
@@ -55,7 +57,9 @@ function Controll({emitmessage}) {
         </div>
         <div className="row2"onClick={()=>{
             reset()
-        }}/>
+        }}>
+          {/* {JSON.stringify(card)} */}
+        </div>
       </div>
     </>
   );
