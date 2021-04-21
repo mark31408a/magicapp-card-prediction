@@ -43,7 +43,7 @@ function Controll({emitmessage}) {
     
   }
   const reset = ()=>{
-    window.navigator.vibrate(1000);
+    window.navigator.vibrate([500,500,500,500,500])
     setcard({})
   }
   return (

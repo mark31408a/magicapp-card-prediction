@@ -20,7 +20,7 @@ const useSocket = ()=>{
       setTimeout(()=>{
         window.navigator.vibrate(800)
         console.log("get")
-      },1000)
+      },500)
       return 
     }
     window.location.replace(`https://www.random.org/playing-cards/?cards=1&decks=2&${payload.suit}=on&${payload.number}=on`);
