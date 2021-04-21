@@ -16,7 +16,9 @@ function Controll({emitmessage}) {
     
 //   },)
   const handleClick = (x)=>{
-    window.navigator.vibrate(200);
+    if(x === 0)window.navigator.vibrate(100);
+    else window.navigator.vibrate([40,20,40]);
+
     setcard((card)=>{
       
       if(card.red===undefined){

@@ -28,10 +28,10 @@
     flex-grow: 1;
     display: table-cell;
 }
-
+/* 
 .col:active{
     background-color: rgb(255, 255, 255,0.1);
 }
 .row2:active{
     background-color: rgb(255, 255, 255,0.1);
-}
+} */
