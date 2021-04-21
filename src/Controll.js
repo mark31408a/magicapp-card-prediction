@@ -16,8 +16,8 @@ function Controll({emitmessage}) {
     
 //   },)
   const handleClick = (x)=>{
-    if(x === 0)window.navigator.vibrate(120);
-    else window.navigator.vibrate(80);
+    if(x === 0)window.navigator.vibrate(200);
+    else window.navigator.vibrate(100);
 
     setcard((card)=>{
       
@@ -43,7 +43,7 @@ function Controll({emitmessage}) {
     
   }
   const reset = ()=>{
-    window.navigator.vibrate(200);
+    window.navigator.vibrate(1000);
     setcard({})
   }
   return (
